@@ -1,0 +1,16 @@
+{% extends "base.html" %}
+{% load staticfiles %}
+
+{% block content %}
+  <div class="container">
+    <ul class="list-unstyled">
+      <li><h4 class="text-muted">Name: {{ object.beer_name }}</h4></li>
+      <li><h4 class="text-muted">Brewery: {{ object.brewer_name }}</h4></li>
+      <li><h4 class="text-muted">Style: {{ object.beer_type }}</h4></li>
+      <li><h4 class="text-muted">ABV: {{ object.abv }}</h4></li>
+    </ul>
+    {% for rest in restaurant %}
+      {{ object.restaurant }}
+    {% endfor %}
+  </div>
+{% endblock %}

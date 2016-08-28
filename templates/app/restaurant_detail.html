@@ -1,0 +1,11 @@
+{% extends "base.html" %}
+{% load staticfiles %}
+
+{% block content %}
+  <div class="container">
+    {% for rest in object.restaurant  %}
+      {{ rest }}
+    {% endfor %}
+    {{ object.beer}}
+  </div>
+{% endblock %}

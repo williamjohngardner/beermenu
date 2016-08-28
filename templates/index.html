@@ -1,0 +1,77 @@
+{% extends "base.html" %}
+{% load staticfiles %}
+
+
+{% block content %}
+  <div class="container">
+    <div class="row">
+      <div class="col-xs-9 col-md-9 col-lg-9">
+        <div class="panel panel-default">
+          <div class="panel-heading">
+            <h3 class="panel-title">Search by Restaurant:</h3>
+          </div>
+          <div class="panel-body">
+            {% for rest in restaurant  %}
+              <div class="dropdown">
+                <button class="btn btn-default dropdown-toggle" type="button" id="dropdownMenu1" data-toggle="dropdown" aria-haspopup="true" aria-expanded="true">
+                    {{ rest.name }}
+                  <span class="caret"></span>
+                </button>
+                <ul class="dropdown-menu" aria-labelledby="dropdownMenu1">
+                  {% for beer in rest.beer_set.all  %}
+                    <li><a href="{% url 'beer_detail_view' beer.pk %}">{{beer.beer_name}}</a></li>
+                  {% endfor %}
+                </ul>
+              </div>
+              <br>
+            {% endfor %}
+          </div>
+        </div>
+      </div>
+      <div class="col-xs-3 col-md-3 col-lg-3">
+        <div class="panel panel-default">
+          <div class="panel-heading">
+            <h3 class="panel-title">Search by Beer:</h3>
+          </div>
+          <div class="panel-body">
+            <ul class="list-unstyled">
+              {% for b in beer  %}
+                <li><a href="{% url 'beer_detail_view' b.pk %}">{{ b.beer_name }}</a></li>
+              {% endfor %}
+            </ul>
+          </div>
+        </div>
+      </div>
+    </div>
+    <div class="row">
+      <div class="col-sm-9 col-md-9 col-lg-9">
+        <div class="panel panel-default">
+          <div class="panel-heading">
+            <h3 class="panel-title">UnTappd Ratings:</h3>
+          </div>
+          <div class="panel-body">
+            Here is some content:
+          </div>
+        </div>
+      </div>
+      <div class="col-sm-3 col-md-3 col-lg-3">
+        <div class="panel panel-default">
+          <div class="panel-heading">
+            <h3 class="panel-title">Latest UnTappd Checkins:</h3>
+          </div>
+          <div class="panel-body">
+            <ul class="list-unstyled">
+              <li>Bill Gardner</li>
+              <li>John Burroughs</li>
+              <li>Harry Harne</li>
+              <li>Cathy McNally</li>
+              <li>Taryn Burroughs</li>
+              <li>Klu Labelle</li>
+              <li>Jake Knill</li>
+            </ul>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+{% endblock %}
